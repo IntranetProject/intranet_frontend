@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.2";
+$version = "v0.0.3";
 
 $network_path = "//server/";
 $language_file = "language/DE_de.php";
@@ -11,7 +11,7 @@ $__database = "Intranet";
 
 
 //Nothing important here.. :)
-ini_set('display_errors', 0);
 
+ini_set('display_errors', 0);
 include $language_file;
 ?>
