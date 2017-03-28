@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-include '../php/config.php';
+include_once '../php/config.php';
 if (($_SESSION['login'])) {
 
 } else {
-  header("Location: " . $network_path . "Intranet");
+  header("Location: " . $network_path);
 }
 ?><!--[if IE 9 ]><html class="ie9"><![endif]-->
 <html>

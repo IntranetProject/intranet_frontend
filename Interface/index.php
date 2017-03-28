@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-include '../php/config.php';
+include_once '../php/config.php';
 if (($_SESSION['login'])) {
 
 } else {
-  header("Location: " . $network_path . "Intranet");
+  header("Location: " . $network_path);
 }
 ?>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
@@ -98,7 +98,6 @@ if (($_SESSION['login'])) {
           foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (substr(basename($file),0,strlen('interface_')) === 'interface_') {
-                $base = basename($file);
                 include($file);
               }
             }

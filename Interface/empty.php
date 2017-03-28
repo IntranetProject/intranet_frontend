@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../php/config.php';
+include_once '../php/config.php';
 if (($_SESSION['login'])) {
 
 } else {
