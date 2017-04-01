@@ -1,8 +1,8 @@
 <?php
-$version = "v0.0.4";
+$version = "v0.0.5";
 
 $network_path = "//server/";
-$language_files = "DE";
+$language = "DE";
 
 $__database_host = "localhost";
 $__database_user = "root";
@@ -15,15 +15,27 @@ $__database = "Intranet";
 // for debugging:
 ini_set('display_errors', 0);
 
-// including the systems language variables
-include_once 'language/' . $language_files . '.php';
-
 // including language files for the modules (if some installed)
-$dir = "../../Interface/modules/language/*";
-foreach (glob($dir) as $file) {
-  if (!is_dir($file)) {
-    if (substr(basename($file),0,strlen($language_files)) === $language_files) {
-      include_once $file;
+$link = mysql_connect($__database_host, $__database_user, $__database_password);
+if (!$link) {
+  die("Keine Datenbankverbindung möglich: " . mysql_error());
+}
+
+$datenbank = mysql_select_db($__database, $link);
+if (!$datenbank) {
+  echo "Kann die Datenbank nicht nutzten: " . mysql_error();
+  mysql_close($link);
+  exit;
+}
+
+if ($language === "DE") {
+  $sql = "SELECT * FROM `system_vars_de`";
+  $res = mysql_query($sql, $link);
+  $amount = @mysql_num_rows($res);
+  
+  if ($amount > 0) {
+    while ($row = mysql_fetch_assoc($res)) {
+      $_SESSION[$row['var']] = utf8_encode($row['value']);
     }
   }
 }

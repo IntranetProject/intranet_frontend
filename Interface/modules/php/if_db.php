@@ -1,5 +1,4 @@
 <?php
-
 include '../php/config.php';
 
 $db_host = $__database_host;

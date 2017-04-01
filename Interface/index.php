@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once '../php/config.php';
+include '../php/config.php';
 if (($_SESSION['login'])) {
 
 } else {
@@ -47,7 +47,7 @@ if (($_SESSION['login'])) {
             <a data-toggle="dropdown" href="#"><i class="him-icon zmdi zmdi-more-vert"></i></a>
             <ul class="dropdown-menu dm-icon pull-right">
               <li class="hidden-xs">
-                <a data-ma-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i><?php echo $__system_index_togglefullscreen; ?></a>
+                <a data-ma-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i><?php echo $_SESSION['system_index_togglefullscreen']; ?></a>
               </li>
             </ul>
           </li>
@@ -65,15 +65,15 @@ if (($_SESSION['login'])) {
           </div></a>
           <ul>
             <li>
-              <a href="settings.php"><?php echo $__system_index_settings; ?></a>
+              <a href="settings.php"><?php echo $_SESSION['system_index_settings']; ?></a>
             </li>
             <li>
-              <a href="php/logout.php"><?php echo $__system_index_logout; ?></a>
+              <a href="php/logout.php"><?php echo $_SESSION['system_index_logout']; ?></a>
             </li>
           </ul>
         </li>
         <li class="active">
-          <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $__system_index_dashboard; ?></a>
+          <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
         </li>
         <?php
           $dir = "modules/*";

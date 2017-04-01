@@ -46,7 +46,7 @@ if (($_SESSION['login'])) {
             <a data-toggle="dropdown" href="#"><i class="him-icon zmdi zmdi-more-vert"></i></a>
             <ul class="dropdown-menu dm-icon pull-right">
               <li class="hidden-xs">
-                <a data-ma-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i><?php echo $__system_index_togglefullscreen; ?></a>
+                <a data-ma-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i><?php echo $_SESSION['system_index_togglefullscreen']; ?></a>
               </li>
             </ul>
           </li>
@@ -64,15 +64,15 @@ if (($_SESSION['login'])) {
           </div></a>
           <ul>
             <li class="active">
-              <a href="settings.php"><?php echo $__system_index_settings; ?></a>
+              <a href="settings.php"><?php echo $_SESSION['system_index_settings']; ?></a>
             </li>
             <li>
-              <a href="php/logout.php"><?php echo $__system_index_logout; ?></a>
+              <a href="php/logout.php"><?php echo $_SESSION['system_index_logout']; ?></a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $__system_index_dashboard; ?></a>
+          <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
         </li><?php
                   $dir = "modules/*";
                   foreach (glob($dir) as $file) {
@@ -108,10 +108,10 @@ if (($_SESSION['login'])) {
                   unset($_SESSION['create_user']);
                 }
                 ?>
-        <h2><?php echo $__system_settings_title; ?></h2>
+        <h2><?php echo $_SESSION['system_settings_title']; ?></h2>
         <div class="card">
           <div class="card-header">
-            <h2><?php echo $__system_settings_privatetitle; ?><small><?php echo $__system_settings_privatdesc; ?></small></h2>
+            <h2><?php echo $_SESSION['system_settings_privatetitle']; ?><small><?php echo $_SESSION['system_settings_privatdesc']; ?></small></h2>
           </div>
           <div class="card-body card-padding">
             <form action="php/saveoptions.php" class="row" method="POST" role="form">
@@ -131,14 +131,14 @@ if (($_SESSION['login'])) {
                 </div>
               </div>
               <div class="col-sm-2">
-                <button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" "><?php echo $__system_settings_save; ?></button>
+                <button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" "><?php echo $_SESSION['system_settings_save']; ?></button>
               </div>
             </form>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
-            <h2><?php echo $__system_settings_pictitle; ?><small><?php echo $__system_settings_picdesc; ?></small></h2>
+            <h2><?php echo $_SESSION['system_settings_pictitle']; ?><small><?php echo $_SESSION['system_settings_picdesc']; ?></small></h2>
           </div>
           <div class="card-body card-padding">
             <form action="php/changeprofilepicture.php" enctype="multipart/form-data" method="post" class="row" role="form" >
@@ -148,7 +148,7 @@ if (($_SESSION['login'])) {
                 </div>
               </div>
               <div class="col-sm-2">
-                <button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" "><?php echo $__system_settings_save; ?></button>
+                <button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" "><?php echo $_SESSION['system_settings_save']; ?></button>
               </div>
             </form>
           </div>
@@ -157,7 +157,7 @@ if (($_SESSION['login'])) {
         if ($_SESSION['rank'] == "admin") {
         echo '<div class="card">';
           echo '<div class="card-header">';
-            echo '<h2>' . $__system_settings_usermanagment . '<small> ' . $__system_settings_usermanagmentdesc . '</small><small>' . $__system_settings_usermanagment_adduser . '</small></h2>';
+            echo '<h2>' . $_SESSION['system_settings_usermanagment'] . '<small> ' . $_SESSION['system_settings_usermanagmentdesc'] . '</small><small>' . $_SESSION['system_settings_usermanagment_adduser'] . '</small></h2>';
           echo '</div>';
           echo '<div class="card-body card-padding"><form class="row" role="form" action="php/createuser.php" method="POST">';
             echo '<div class="col-sm-2"><div class="form-group fg-line"><label class="sr-only" for="create_name">Name</label> <input class="form-control input-sm" id="create_name" name="name" placeholder="Name" type="text" required></div></div>';
@@ -170,14 +170,31 @@ if (($_SESSION['login'])) {
         
         echo '<div class="card">';
           echo '<div class="card-header">';
-            echo '<h2>' . $__system_settings_usermanagment_userlisttitle . '<small>' . $__system_settings_usermanagment_userlistsmall . '</small></h2>';
+            echo '<h2>' . $_SESSION['system_settings_usermanagment_userlisttitle'] . '<small>' . $_SESSION['system_settings_usermanagment_userlistsmall'] . '</small></h2>';
           echo '</div>';
           echo '<div class="card-body card-padding table-reponsive">';
             echo '<table class="table">';
               echo '<thead><tr><th>#</th><th>Name</th><th>Loginname</th><th>img_url</th><th>Rank</th></tr></thead>';
               echo '<tbody>';
               
-              include 'php/database.php';
+              include '../php/config.php';
+
+              $db_host = $__database_host;
+              $db_db = $__database;
+              $db_user = $__database_user;
+              $db_passwd = $__database_password;
+              
+              $link = mysql_connect($db_host, $db_user, $db_passwd);
+              if (!$link) {
+                die("Keine Datenbankverbindung möglich: " . mysql_error());
+              }
+              
+              $datenbank = mysql_select_db($db_db, $link);
+              if (!$datenbank) {
+                echo "Kann die Datenbank nicht nutzten: " . mysql_error();
+                mysql_close($link);
+                exit;
+              }
               $_sql = "SELECT * FROM users";
               $_res = mysql_query($_sql, $link);
               $_anzahl = @mysql_num_rows($_res);

@@ -1,6 +1,5 @@
 <?php
-
-include '../php/config.php';
+include '../../php/config.php';
 
 $db_host = $__database_host;
 $db_db = $__database;
