@@ -1,8 +1,10 @@
-<?php
-$version = "v0.0.5";
+﻿<?php
+$version = "v0.0.6";
 
 $network_path = "//server/";
-$language = "DE";
+
+// currently available: de = German; en = English;
+$language = "de";
 
 $__database_host = "localhost";
 $__database_user = "root";
@@ -28,15 +30,15 @@ if (!$datenbank) {
   exit;
 }
 
-if ($language === "DE") {
-  $sql = "SELECT * FROM `system_vars_de`";
-  $res = mysql_query($sql, $link);
-  $amount = @mysql_num_rows($res);
+
+$sql = "SELECT * FROM `system_vars_" . $language . "`";
+$res = mysql_query($sql, $link);
+$amount = @mysql_num_rows($res);
   
-  if ($amount > 0) {
-    while ($row = mysql_fetch_assoc($res)) {
-      $_SESSION[$row['var']] = utf8_encode($row['value']);
-    }
+if ($amount > 0) {
+  while ($row = mysql_fetch_assoc($res)) {
+    $_SESSION[$row['var']] = utf8_encode($row['value']);
   }
 }
+
 ?>
