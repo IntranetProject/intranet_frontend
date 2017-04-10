@@ -34,24 +34,29 @@ if ($_anzahl <= 0) {
   $initial_setup = false;
   }
 ?>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <title>Intranet - Login</title><!-- Vendor CSS -->
-  <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-  <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet"><!-- CSS -->
-  <link href="css/app_1.min.css" rel="stylesheet">
-  <link href="css/app_2.min.css" rel="stylesheet">
-  <style type="text/css">
-        body {
-          overflow:hidden !important;
-        }
-  </style>
-</head>
-<body>
-  <?php
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>Intranet - Login</title>
+        <!-- Vendor CSS -->
+        <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <!-- CSS -->
+        <link href="css/app_1.min.css" rel="stylesheet">
+        <link href="css/app_2.min.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                overflow: hidden !important;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <?php
   if ($initial_setup == false) {
   echo '<div class="login-content">
     <!-- Login -->
@@ -122,8 +127,9 @@ if ($_anzahl <= 0) {
   }
     ?>
 
-  </div><!-- Older IE warning message -->
-  <!--[if lt IE 9]>
+            </div>
+            <!-- Older IE warning message -->
+            <!--[if lt IE 9]>
             <div class="ie-warning">
                 <h1 class="c-white">Warning!!</h1>
                 <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
@@ -164,18 +170,28 @@ if ($_anzahl <= 0) {
                 <p>Sorry for the inconvenience!</p>
             </div>   
         <![endif]-->
-  <!-- Javascript Libraries -->
-  <script src="vendors/bower_components/jquery/dist/jquery.min.js">
-  </script> 
-  <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
-  </script> 
-  <script src="vendors/bower_components/Waves/dist/waves.min.js">
-  </script> <!-- Placeholder for IE9 -->
-   <!--[if IE 9 ]>
+            <!-- Javascript Libraries -->
+            <script src="vendors/bower_components/jquery/dist/jquery.min.js">
+
+
+            </script>
+            <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
+
+
+            </script>
+            <script src="vendors/bower_components/Waves/dist/waves.min.js">
+
+
+            </script>
+            <!-- Placeholder for IE9 -->
+            <!--[if IE 9 ]>
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
-   
-  <script src="js/app.min.js">
-  </script>
-</body>
-</html>
+
+            <script src="js/app.min.js">
+
+
+            </script>
+    </body>
+
+    </html>

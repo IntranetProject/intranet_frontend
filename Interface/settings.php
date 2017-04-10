@@ -85,6 +85,9 @@ if (($_SESSION['login'])) {
                     }
                   }
                    ?>
+          <li>
+            <a href="stats.php"><i class="zmdi zmdi-reader"></i><?php echo $_SESSION['system_index_stats']; ?></a>
+          </li>
       </ul>
     </aside>
     <section id="content">

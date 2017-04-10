@@ -1,5 +1,5 @@
-﻿<?php
-$version = "v0.0.6";
+<?php
+$version = "v0.0.7";
 
 $network_path = "//server/";
 
@@ -18,25 +18,18 @@ $__database = "Intranet";
 ini_set('display_errors', 0);
 
 // including language files for the modules (if some installed)
-$link = mysql_connect($__database_host, $__database_user, $__database_password);
-if (!$link) {
-  die("Keine Datenbankverbindung möglich: " . mysql_error());
-}
+$link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
 
-$datenbank = mysql_select_db($__database, $link);
-if (!$datenbank) {
-  echo "Kann die Datenbank nicht nutzten: " . mysql_error();
-  mysql_close($link);
-  exit;
+if ($link->connect_errno > 0) {
+    die("Can't connect to Database! Check login credentials!" . $link->connect_errno);
 }
-
 
 $sql = "SELECT * FROM `system_vars_" . $language . "`";
-$res = mysql_query($sql, $link);
-$amount = @mysql_num_rows($res);
-  
+
+$result = $link->query($sql);
+$amount = $result->num_rows;
 if ($amount > 0) {
-  while ($row = mysql_fetch_assoc($res)) {
+  while ($row = $result->fetch_assoc()) {
     $_SESSION[$row['var']] = utf8_encode($row['value']);
   }
 }
