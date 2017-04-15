@@ -32,6 +32,7 @@ if ($amount > 0) {
   while ($row = $result->fetch_assoc()) {
     $_SESSION[$row['var']] = utf8_encode($row['value']);
   }
+    mysqli_close($link);
 }
 
 ?>

@@ -7,20 +7,14 @@ $db_db = $__database;
 $db_user = $__database_user;
 $db_passwd = $__database_password;
 
-$link = mysql_connect($db_host, $db_user, $db_passwd);
-if (!$link) {
-  die("Keine Datenbankverbindung möglich: " . mysql_error());
+$link = new mysqli($db_host, $db_user, $db_passwd, $db_db);
+if ($link->connect_errno > 0) {
+    die("Can't connect to Database! Check login credentials!" . $link->connect_errno);
 }
 
-$datenbank = mysql_select_db($db_db, $link);
-if (!$datenbank) {
-  echo "Kann die Datenbank nicht nutzten: " . mysql_error();
-  mysql_close($link);
-  exit;
-}
 $_sql = "SELECT * FROM users";
-$_res = mysql_query($_sql, $link);
-$_anzahl = @mysql_num_rows($_res);
+$_res = $link->query($_sql);
+$_anzahl = $_res->num_rows;
   
 if ($_anzahl <= 0) {
   $__system_setup_desc = "<p>It looks like your visiting the first time. You need to setup the Databases or have our script doing it for you. Just put in your MySQL-Logindata below and click on setup!<br>This will only create the tables that are nessesarry for the basic system. <br> For every module you have to run their special initial script! </p>";

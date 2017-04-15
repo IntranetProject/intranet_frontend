@@ -12,21 +12,15 @@ $db_db = $__database;
 $db_user = $__database_user;
 $db_passwd = $__database_password;
 
-$link = mysql_connect($db_host, $db_user, $db_passwd);
-if (!$link) {
-  die("Can't connect to Database: " . mysql_error());
+$link = new mysqli($db_host, $db_user, $db_passwd, $db_db);
+if ($link->connect_errno > 0) {
+    die("Can't connect to Database! Check login credentials!" . $link->connect_errno);
 }
 
-$datenbank = mysql_select_db($db_db, $link);
-if (!$datenbank) {
-  echo "Can't use the Database: " . mysql_error();
-  mysql_close($link);
-  exit;
-}
 if(!(empty($_POST['submit']))) {
-  $_name = mysql_real_escape_string($_POST['name']);
-  $_loginname = mysql_real_escape_string($_POST['loginname']);
-  $_password = md5(mysql_real_escape_string($_POST['password']));
+  $_name = $link->real_escape_string($_POST['name']);
+  $_loginname = $link->real_escape_string($_POST['loginname']);
+  $_password = md5($link->real_escape_string($_POST['password']));
 } else {
 	header('Location: ' . $network_path);
 }
@@ -47,9 +41,9 @@ $_sql = "CREATE TABLE IF NOT EXISTS `users` (
  PRIMARY KEY (`id`),
  UNIQUE KEY `login` (`login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1";
-$_res = mysql_query($_sql, $link);
+$_res = $link->query($_sql);
 $sql = "INSERT INTO `users` (`login`, `password`, `name`, `ìmg_url`, `rank`) VALUES (`" . $_loginname . "`, `" . $_password . "`, `" . $_name . "`, `img/" . $_loginname . ".png`, `admin`);"
-$res = mysql_query($sql, $link);
+$res = $link->query($sql);
 
 /*
  *
@@ -63,7 +57,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `system_vars_en`
   ) 
 engine=innodb 
 DEFAULT charset=latin1; ";
-$res = mysql_query($sql, $link);
+$res = $link->query($sql);
 
 $sql = "INSERT INTO `system_vars_en` (`var`, `value`) VALUES
 ('system_index_togglefullscreen', 'Toggle Fullscreen'),
@@ -86,7 +80,7 @@ $sql = "INSERT INTO `system_vars_en` (`var`, `value`) VALUES
 ('system_setup_logindesc', 'Enter the credentials for the admin user!'),
 ('system_setup_timeinformation', 'Start Setup! <small>Setup can take a while. Please stay patient!</small>'),
 ('system_setup_configinfo', 'Attention! You have to set your MySQL credentials in the config.php (Folder: /php/config.php) first! Otherwise the setup will not work!<br> After the setup is completed you can login with your credentials down below <br> After that you can create more users. <br> Visit: <a href=''#''>the documentation</a> for more information.');";
-$res = mysql_query($sql, $link);
+$res = $link->query($sql);
 
 /*
  *
@@ -100,7 +94,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `system_vars_de`
   ) 
 engine=innodb 
 DEFAULT charset=latin1;";
-$res = mysql_query($sql, $link);
+$res = $link->query($sql);
 
 $sql = "INSERT INTO `system_vars_de` (`var`, `value`) VALUES
 ('system_index_togglefullscreen', 'Vollbild Modus aktivieren'),
@@ -123,7 +117,7 @@ $sql = "INSERT INTO `system_vars_de` (`var`, `value`) VALUES
 ('system_setup_logindesc', 'Gib hier die Daten für deinen Admin Benutzer ein!'),
 ('system_setup_timeinformation', 'Starten! <small>Der Vorgang kann eine Augenblick in Anspruch nehmen, bleib entspannt!</small>'),
 ('system_setup_configinfo', 'Achtung! Du musst als erstes in der config.php (Odner: /php/config.php) die MySQL-Daten eintragen! Sonst wird das Setup nicht funktionieren! <br> Nach dem Setup wirst du dich mit deinen unten angegebenen Daten einloggen können. <br> Dann kannst du weitere Benutzer erstellen. <br> Besuche: <a href=''#''>the documentation</a> für mehr Information.');";
-$res = mysql_query($sql, $link);
+$res = $link->query($sql);
 
 header('Location: ' . $network_path);
 ?>
