@@ -120,5 +120,5 @@ echo $link->error;
 
 mysqli_close();
 
-//header('Location: ' . $network_path);
+header('Location: ' . $network_path);
 ?>

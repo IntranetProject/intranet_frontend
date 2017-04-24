@@ -1,7 +1,7 @@
 <?php
 $version = "v0.0.10";
 
-$network_path = "//localhost/";
+$network_path = "//server/IntraDev";
 
 // currently available: de = German; en = English;
 $language = "de";

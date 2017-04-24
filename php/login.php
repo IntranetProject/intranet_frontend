@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       $_SESSION['img_url'] = $row['img_url'];
     }
     mysqli_close($link);
-    header("Location: " . $network_path . "Intranet/Interface/index.php");
+    header("Location: " . $network_path . "/Interface/index.php");
   } else {
     $_SESSION['login_error_message'] = "Fehler beim einloggen. Bitte überprüfe deine Daten.";
-    header("Location: " . $network_path . "Intranet");
+    header("Location: " . $network_path);
   }
 }
 if(!(empty($_POST['submit']))) {
@@ -55,10 +55,10 @@ if(!(empty($_POST['submit']))) {
       $_SESSION['img_url'] = $row['img_url'];
     }
     mysqli_close($link);
-    header("Location: " . $network_path . "Intranet/Interface/index.php");
+    header("Location: " . $network_path . "/Interface/index.php");
   } else {
     $_SESSION['login_error_message'] = "Fehler beim einloggen. Bitte überprüfe deine Daten.";
-    header("Location: " . $network_path . "Intranet");
+    header("Location: " . $network_path);
   }
 } else {
   echo "Post is empty!";
@@ -66,7 +66,7 @@ if(!(empty($_POST['submit']))) {
 
 
 if ($_SESSION['login'] == 1) {
-  header("Location: " . $network_path . "Intranet/Interface/index.php");
+  header("Location: " . $network_path . "/Interface/index.php");
   mysqli_close($link);
   exit;
 }

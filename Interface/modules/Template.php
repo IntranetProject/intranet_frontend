@@ -10,14 +10,14 @@ include 'php/basics.php';
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <title>Intranet - Module Template</title>
         <!-- Vendor CSS -->
-        <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
-        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+        <link href="../vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+        <link href="../vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+        <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
         <!-- CSS -->
-        <link href="css/app_1.min.css" rel="stylesheet">
-        <link href="css/app_2.min.css" rel="stylesheet">
+        <link href="../css/app_1.min.css" rel="stylesheet">
+        <link href="../css/app_2.min.css" rel="stylesheet">
         <style type="text/css">
              ::-webkit-scrollbar {
                 display: none;
@@ -58,28 +58,28 @@ include 'php/basics.php';
             <aside class="sidebar c-overflow" id="sidebar">
                 <ul class="main-menu">
                     <li class="mm-profile sub-menu">
-                        <a class="media" data-ma-action="submenu-toggle" href="#"><img alt="" class="pull-left" src="<?php echo $_SESSION['img_url'] ?>">
+                        <a class="media" data-ma-action="submenu-toggle" href="#"><img alt="" class="pull-left" src="<?php echo "../" . $_SESSION['img_url'] ?>">
           <div class="media-body">
             <?php echo $_SESSION['name'] ?>
           </div></a>
                         <ul>
                             <li>
-                                <a href="settings.php">
+                                <a href="../settings.php">
                                     <?php echo $_SESSION['system_index_settings']; ?>
                                 </a>
                             </li>
                             <li>
-                                <a href="php/logout.php">
+                                <a href="../php/logout.php">
                                     <?php echo $_SESSION['system_index_logout']; ?>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
-                        <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
+                    <li>
+                        <a href="../index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
                     </li>
                     <?php
-          $dir = "modules/*";
+          $dir = "*";
           foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (basename(__FILE__, '.php') == basename($file, '.php')) {
@@ -91,7 +91,7 @@ include 'php/basics.php';
           }
            ?>
                         <li>
-                            <a href="stats.php"><i class="zmdi zmdi-reader"></i><?php echo $_SESSION['system_index_stats']; ?></a>
+                            <a href="../stats.php"><i class="zmdi zmdi-reader"></i><?php echo $_SESSION['system_index_stats']; ?></a>
                         </li>
                 </ul>
             </aside>
@@ -157,59 +157,59 @@ include 'php/basics.php';
             </div>
         <![endif]-->
         <!-- Javascript Libraries -->
-        <script src="vendors/bower_components/jquery/dist/jquery.min.js">
+        <script src="../vendors/bower_components/jquery/dist/jquery.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        <script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/flot/jquery.flot.js">
+        <script src="../vendors/bower_components/flot/jquery.flot.js">
 
 
         </script>
-        <script src="vendors/bower_components/flot/jquery.flot.resize.js">
+        <script src="../vendors/bower_components/flot/jquery.flot.resize.js">
 
 
         </script>
-        <script src="vendors/bower_components/flot.curvedlines/curvedLines.js">
+        <script src="../vendors/bower_components/flot.curvedlines/curvedLines.js">
 
 
         </script>
-        <script src="vendors/sparklines/jquery.sparkline.min.js">
+        <script src="../vendors/sparklines/jquery.sparkline.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js">
+        <script src="../vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/moment/min/moment.min.js">
+        <script src="../vendors/bower_components/moment/min/moment.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js">
+        <script src="../vendors/bower_components/fullcalendar/dist/fullcalendar.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js">
+        <script src="../vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/Waves/dist/waves.min.js">
+        <script src="../vendors/bower_components/Waves/dist/waves.min.js">
 
 
         </script>
-        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js">
+        <script src="../vendors/bootstrap-growl/bootstrap-growl.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js">
+        <script src="../vendors/bower_components/sweetalert/dist/sweetalert.min.js">
 
 
         </script>
-        <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js">
+        <script src="../vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js">
 
 
         </script>
@@ -218,7 +218,7 @@ include 'php/basics.php';
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
 
-        <script src="js/app.min.js">
+        <script src="../js/app.min.js">
 
 
         </script>

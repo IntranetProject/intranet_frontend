@@ -24,7 +24,7 @@ if(!(empty($_POST['submit']))) {
       $_SESSION['loginname'] = $_loginname;
       $_SESSION['name'] = $_name;
       $_SESSION['change_profile'] = "Dein Profil wurde geupdated!";
-      header('Location: ' . $network_path . 'Intranet/Interface/settings.php');
+      header('Location: ' . $network_path . '/Interface/settings.php');
     } else {
       echo "Failed!";
       $_SESSION['change_profile'] = "Es gibt einen Fehler. Bitte übprüfe deine Angaben!";

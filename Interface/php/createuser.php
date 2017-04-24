@@ -21,10 +21,10 @@ if(!(empty($_POST['submit']))) {
   if ($_res === TRUE) {
     mysql_close($link);
     $_SESSION['create_user'] = "Der Benutzer wurde erfogreich erstellt!";
-    header("Location: " . $network_path . "Intranet/Interface/settings.php");
+    header("Location: " . $network_path . "/Interface/settings.php");
   } else {
     $_SESSION['create_user'] = "Fehler beim erstellen des Benutzeraccounts!";
-    header("Location: " . $network_path . "Intranet/Interface/settings.php");
+    header("Location: " . $network_path . "/Interface/settings.php");
   }
   echo $_SESSION['create_user'];
   echo $_name;
