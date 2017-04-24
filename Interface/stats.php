@@ -107,7 +107,7 @@ if (($_SESSION['login'])) {
 
                     <div class="card">
                         <div class="card-header">
-                            <h2>Server Information <small>Here you can view all the information from your server</small> </h2>
+                            <h2>Server Information <small><?php echo $_SESSION['system_stats_desc'] ?></small> </h2>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">

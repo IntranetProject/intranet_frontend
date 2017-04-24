@@ -23,7 +23,7 @@ if ($link->connect_errno > 0) {
  *
  */
 
-$_sql = "CREATE TABLE IF NOT EXISTS `users` (
+$_sql = utf8_decode("CREATE TABLE IF NOT EXISTS `users` (
  `id` int(100) NOT NULL AUTO_INCREMENT,
  `login` varchar(50) NOT NULL,
  `password` varchar(100) NOT NULL,
@@ -32,7 +32,7 @@ $_sql = "CREATE TABLE IF NOT EXISTS `users` (
  `rank` varchar(5) NOT NULL,
  PRIMARY KEY (`id`),
  UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 $_res = $link->query($_sql);
 
 /*
@@ -49,7 +49,7 @@ engine=innodb
 DEFAULT charset=latin1; ";
 $res = $link->query($sql);
 
-$sql = "INSERT INTO `system_vars_en` (`var`, `value`) VALUES
+$sql = utf8_decode("INSERT INTO `system_vars_en` (`var`, `value`) VALUES
 ('system_index_togglefullscreen', 'Toggle Fullscreen'),
 ('system_index_settings', 'Settings'),
 ('system_index_logout', 'Logout'),
@@ -69,7 +69,9 @@ $sql = "INSERT INTO `system_vars_en` (`var`, `value`) VALUES
 ('system_setup_title', 'First Steps'),
 ('system_setup_logindesc', 'Enter the credentials for the admin user!'),
 ('system_setup_timeinformation', 'Start Setup! <small>Setup can take a while. Please stay patient!</small>'),
-('system_setup_configinfo', 'Attention! You have to set your MySQL credentials in the config.php (Folder: /php/config.php) first! Otherwise the setup will not work!<br> After the setup is completed you can login with your credentials down below <br> After that you can create more users. <br> Visit: <a href=''#''>the documentation</a> for more information.');";
+('system_setup_configinfo', 'Attention! You have to set your MySQL credentials in the config.php (Folder: /php/config.php) first! Otherwise the setup will not work!<br> After the setup is completed you can login with your credentials down below <br> After that you can create more users. <br> Visit: <a href=''#''>the documentation</a> for more information.'),
+('system_index_stats', 'Stats'),
+('system_stats_desc', 'Here you can view all the information from your server, this site is kept in english since you probably know what you are doing.');");
 $res = $link->query($sql);
 
 /*
@@ -86,7 +88,7 @@ engine=innodb
 DEFAULT charset=latin1; ";
 $res = $link->query($sql);
 
-$sql = "INSERT INTO `system_vars_de` (`var`, `value`) VALUES
+$sql = utf8_decode("INSERT INTO `system_vars_de` (`var`, `value`) VALUES
 ('system_index_togglefullscreen', 'Vollbild Modus aktivieren'),
 ('system_index_settings', 'Einstellungen'),
 ('system_index_logout', 'Abmelden'),
@@ -106,7 +108,9 @@ $sql = "INSERT INTO `system_vars_de` (`var`, `value`) VALUES
 ('system_setup_title', 'Erste Schritte'),
 ('system_setup_logindesc', 'Gib hier die Daten für deinen Admin Benutzer ein!'),
 ('system_setup_timeinformation', 'Starten! <small>Der Vorgang kann eine Augenblick in Anspruch nehmen, bleib entspannt!</small>'),
-('system_setup_configinfo', 'Achtung! Du musst als erstes in der config.php (Odner: /php/config.php) die MySQL-Daten eintragen! Sonst wird das Setup nicht funktionieren! <br> Nach dem Setup wirst du dich mit deinen unten angegebenen Daten einloggen können. <br> Dann kannst du weitere Benutzer erstellen. <br> Besuche: <a href=''#''>the documentation</a> für mehr Information.');";
+('system_setup_configinfo', 'Achtung! Du musst als erstes in der config.php (Odner: /php/config.php) die MySQL-Daten eintragen! Sonst wird das Setup nicht funktionieren! <br> Nach dem Setup wirst du dich mit deinen unten angegebenen Daten einloggen können. <br> Dann kannst du weitere Benutzer erstellen. <br> Besuche: <a href=''#''>the documentation</a> für mehr Information.'),
+('system_index_stats', 'Statistiken'),
+('system_stats_desc', 'Hier sind einige detailierte Informationen zu deinem Host. Die Seite ist auf Englisch, da du wahrscheinlich weißt, was du tust.');");
 $res = $link->query($sql);
 
 $_loginname = "root";
@@ -118,7 +122,7 @@ $res2 = $link->query($sql2);
 echo $link->error;
 
 
-mysqli_close();
+mysqli_close($link);
 
 header('Location: ' . $network_path);
 ?>
