@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.12";
+$version = "v0.0.13";
 
 $network_path = "//server/IntraDev";
 

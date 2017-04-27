@@ -41,8 +41,8 @@ if ($_anzahl <= 0) {
         <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
         <!-- CSS -->
-        <link href="css/app_1.min.css" rel="stylesheet">
-        <link href="css/app_2.min.css" rel="stylesheet">
+        <link href="Interface/css/app_1.min.css" rel="stylesheet">
+        <link href="Interface/css/app_2.min.css" rel="stylesheet">
         <style type="text/css">
             body {
                 overflow: hidden !important;
@@ -132,24 +132,24 @@ if ($_anzahl <= 0) {
             </div>   
         <![endif]-->
             <!-- Javascript Libraries -->
-            <script src="vendors/bower_components/jquery/dist/jquery.min.js">
+            <script src="Interface/vendors/bower_components/jquery/dist/jquery.min.js">
 
 
             </script>
-            <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
+            <script src="Interface/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js">
 
 
             </script>
-            <script src="vendors/bower_components/Waves/dist/waves.min.js">
+            <script src="Interface/vendors/bower_components/Waves/dist/waves.min.js">
 
 
             </script>
             <!-- Placeholder for IE9 -->
             <!--[if IE 9 ]>
-            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+            <script src="Interface/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
 
-            <script src="js/app.min.js">
+            <script src="Interface/js/app.min.js">
 
 
             </script>
