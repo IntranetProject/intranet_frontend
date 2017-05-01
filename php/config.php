@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.13";
+$version = "v0.0.14";
 
 $network_path = "//server/IntraDev";
 
@@ -11,11 +11,11 @@ $__database_user = "root";
 $__database_password = "root";
 $__database = "Intranet2";
 
-
+$restapi = false;
 // Expert Options only! :)
 
 // for debugging:
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 // including language files for the modules (if some installed)
 $link = new mysqli($__database_host, $__database_user, $__database_password, $__database);

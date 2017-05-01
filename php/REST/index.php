@@ -1,14 +1,18 @@
 <?php
-
+require '../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    if (isset($_GET['id'])) {
-        $result = getByID((int) $_GET['id']);
-    } else if (isset($_GET['name'])) {
-        $result = getByName($_GET['name']);
+    if ($restapi == true) {
+        if (isset($_GET['id'])) {
+            $result = getByID((int) $_GET['id']);
+        } else if (isset($_GET['name'])) {
+            $result = getByName($_GET['name']);
+        }
+    } else {
+        $result = "REST API is deactivated by the Admin.";
     }
 } else {
-    echo "BITCH";
+    echo "No get.";
 }
 
 header('HTTP/1.0 200 OK');
@@ -16,9 +20,7 @@ header('Content-Type: application/json');
 echo json_encode($result);
 
 function getByID($id) {
-    
-    include '../config.php';
-    
+    require '../config.php';
     $link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
     $sql = "SELECT * FROM users WHERE id='$id'";
     $res = $link->query($sql);
@@ -34,9 +36,7 @@ function getByID($id) {
     }
 }
 function getByName($name) {
-    
-    include '../config.php';
-    
+    require '../config.php';
     $link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
     $sql = "SELECT * FROM users WHERE login='$name'";
     $res = $link->query($sql);
