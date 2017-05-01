@@ -5,8 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if ($restapi == true) {
         if (isset($_GET['id'])) {
             $result = getByID((int) $_GET['id']);
-        } else if (isset($_GET['name'])) {
+        }
+        if (isset($_GET['name'])) {
             $result = getByName($_GET['name']);
+        }
+        if (isset($_GET['all'])) {
+            $result = getAll();
         }
     } else {
         $result = "REST API is deactivated by the Admin.";
@@ -49,6 +53,23 @@ function getByName($name) {
         return "mysql error";
     } else {
         return "Error 404. User with name ". $name . " not found!";
+    }
+}
+function getAll() {
+    require '../config.php';
+    $link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
+    $sql = "SELECT * FROM users";
+    $res = $link->query($sql);
+    $amount = $res->num_rows;
+    $resu = Array();
+    if ($amount > 0) {
+        while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
+            array_push($resu, $row);
+        }
+        mysqli_close($link);
+        return $resu;
+    } else {
+        return "Error 404. No users found!";
     }
 }
 ?>

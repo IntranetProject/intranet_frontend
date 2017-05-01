@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.14";
+$version = "v0.0.15";
 
 $network_path = "//server/IntraDev";
 
@@ -11,7 +11,7 @@ $__database_user = "root";
 $__database_password = "root";
 $__database = "Intranet2";
 
-$restapi = false;
+$restapi = true;
 // Expert Options only! :)
 
 // for debugging:
