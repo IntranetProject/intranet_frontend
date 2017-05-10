@@ -86,17 +86,17 @@ if (($_SESSION['login'])) {
                         <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
                     </li>
                     <?php
-                  $dir = "modules/*";
-                  foreach (glob($dir) as $file) {
-                    if (!is_dir($file)) {
-                      if (basename(__FILE__, '.php') == basename($file, '.php')) {
-                        echo "<li class='active'><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
-                      } else {
-                        echo "<li><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
-                      }
-                    }
-                  }
-                   ?>
+          $dir = $modules_path . "/*";
+          foreach (glob($dir) as $file) {
+            if (!is_dir($file)) {
+              if (basename(__FILE__, '.php') == basename($file, '.php')) {
+                echo "<li class='active'><a href='" . $modules_path . "/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+              } else {
+                echo "<li><a href='" . $modules_path . "/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+              }
+            }
+          }
+           ?>
                         <li>
                             <a href="stats.php"><i class="zmdi zmdi-reader"></i><?php echo $_SESSION['system_index_stats']; ?></a>
                         </li>
@@ -135,12 +135,12 @@ if (($_SESSION['login'])) {
                                 <form action="php/saveoptions.php" class="row" method="POST" role="form">
                                     <div class="col-sm-3">
                                         <div class="form-group fg-line">
-                                            <label class="sr-only" for="change_name">Email address</label> <input class="form-control input-sm" id="change_name" name="name" placeholder="Name" type="text" required>
+                                            <label class="sr-only" for="change_name">Name</label> <input class="form-control input-sm" id="change_name" name="name" placeholder="Name" type="text" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group fg-line">
-                                            <label class="sr-only" for="change_login">Password</label> <input class="form-control input-sm" id="change_login" name="loginname" placeholder="Login Name" type="text" required>
+                                            <label class="sr-only" for="change_login">Login</label> <input class="form-control input-sm" id="change_login" name="loginname" placeholder="Login Name" type="text" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -184,6 +184,13 @@ if (($_SESSION['login'])) {
             echo '<div class="col-sm-2"><div class="form-group fg-line"><label class="sr-only" for="create_password">Passwort</label> <input class="form-control input-sm" id="create_password" name="password" placeholder="Passwort" type="text" required></div></div>';
             echo '<div class="col-sm-2"><div class="select"><select class="form-control" name="rank" required><option>Benutzer</option><option>Admin</option></select></div></div>';
             echo '<div class="col-sm-2"><button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" ">Speichern!</button></div>';
+          echo '</form></div>';
+          echo '<div class="card-header">';
+            echo '<h2>Delete User<small>Here you can delete a User </small></h2>';
+          echo '</div>';
+          echo '<div class="card-body card-padding"><form class="row" role="form" action="php/deleteuser.php" method="POST">';
+            echo '<div class="col-sm-2"><div class="form-group fg-line"><label class="sr-only" for="delete_id">Delete ID</label> <input class="form-control input-sm" id="delete_id" name="id" placeholder="ID" type="number" required></div></div>';
+            echo '<div class="col-sm-2"><button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" ">Löschen!</button></div>';
           echo '</form>';
         echo '</div></div>';
         

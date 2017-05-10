@@ -86,13 +86,13 @@ if (($_SESSION['login'])) {
                         <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
                     </li>
                     <?php
-          $dir = "modules/*";
+          $dir = $modules_path . "/*";
           foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (basename(__FILE__, '.php') == basename($file, '.php')) {
-                echo "<li class='active'><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+                echo "<li class='active'><a href='" . $modules_path . "/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
               } else {
-                echo "<li><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+                echo "<li><a href='" . $modules_path . "/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
               }
             }
           }

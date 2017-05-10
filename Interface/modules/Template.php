@@ -83,9 +83,9 @@ include 'php/basics.php';
           foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (basename(__FILE__, '.php') == basename($file, '.php')) {
-                echo "<li class='active'><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+                echo "<li class='active'><a href='" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
               } else {
-                echo "<li><a href='modules/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
+                echo "<li><a href='" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
               }
             }
           }

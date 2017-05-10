@@ -2,6 +2,7 @@
 $version = "v0.0.15";
 
 $network_path = "//server/IntraDev";
+$modules_path = "../Interface/modules";
 
 // currently available: de = German; en = English;
 $language = "en";

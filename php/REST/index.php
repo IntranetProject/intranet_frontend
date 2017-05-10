@@ -12,16 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         if (isset($_GET['all'])) {
             $result = getAll();
         }
+        header('HTTP/1.0 200 OK');
+        header('Content-Type: application/json');
+        echo json_encode($result);
     } else {
         $result = "REST API is deactivated by the Admin.";
     }
 } else {
     echo "No get.";
 }
-
-header('HTTP/1.0 200 OK');
-header('Content-Type: application/json');
-echo json_encode($result);
 
 function getByID($id) {
     require '../config.php';
