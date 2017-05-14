@@ -107,7 +107,7 @@ if (($_SESSION['login'])) {
                     <div class="block-header"></div>
                     <h2>Dashboard</h2>
                     <?php
-          $dir = $modules_path . "/*";
+          $dir = $modules_path . "/php/*";
           foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (substr(basename($file),0,strlen('interface_')) === 'interface_') {

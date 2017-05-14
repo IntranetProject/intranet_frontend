@@ -86,8 +86,8 @@ if (($_SESSION['login'])) {
                         <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
                     </li>
                     <?php
-          $dir = $modules_path . "/*";
-          foreach (glob($dir) as $file) {
+        $dir = $modules_path . "/*";
+        foreach (glob($dir) as $file) {
             if (!is_dir($file)) {
               if (basename(__FILE__, '.php') == basename($file, '.php')) {
                 echo "<li class='active'><a href='" . $modules_path . "/" . basename($file) . "'>" . basename($file, ".php") . "<i class='zmdi zmdi-badge-check'></i></a></li>";
@@ -110,7 +110,7 @@ if (($_SESSION['login'])) {
                             <h2>Server Information <small><?php echo $_SESSION['system_stats_desc'] ?></small> </h2>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="epc-item card">
                                     <div class="easy-pie main-pie" data-percent="<?php $load = sys_getloadavg();
 	echo $load[0];?>">
@@ -122,7 +122,7 @@ if (($_SESSION['login'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="epc-item card">
                                     <?php
                                     $free = shell_exec('free');
@@ -143,7 +143,7 @@ if (($_SESSION['login'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <?php
                                     $fh = fopen('/proc/meminfo','r');
                                     $mem = 0;
@@ -171,25 +171,65 @@ if (($_SESSION['login'])) {
                                     </div>
                             </div>
 
-                            <div class="col-sm-3">
-                                <div class="epc-item card">
-                                    <div class="easy-pie main-pie" data-percent="89">
-                                        <div class="percent">89</div>
-                                        <div class="pie-title">Profit Rate</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h2>Stats for Nerds <small>If you get a boner, get a life :)</small></h2>
-
+                            <h2>Intranet Information<small>Detailed Information about the current configuration from your Intranet</small></h2>
                         </div>
-
                         <div class="card-body card-padding">
-                            <p></p>
+                            <h4>Intranet information</h4>
+                            <p class="stats-modules-text">Version:
+                                <?php echo $version; ?>
+                            </p>
+                            <p class="stats-modules-text">Documentation:
+                                <a target="_blank" href="http://docs.intranetproject.net">Offical Site</a>
+                            </p>
+                            <p class="stats-modules-text">Logged in user:
+                                <?php echo $_SESSION['name']; ?>
+                            </p>
+                            <h4>Modules:</h4>
+                            <p class="stats-modules-text">Modules installed:
+                                <?php $i = 0; $dir = $modules_path . "/";
+                                    if ($handle = opendir($dir)) {
+                                        while (($file = readdir($handle)) !== false) {
+                                            if (!in_array($file, array('.', "..")) && !is_dir($dir.$file)) {
+                                                $i++;
+                                            }
+                                        }
+                                        echo $i;
+                                    }
+                                ?>
+                            </p>
+                            <p class="stats-modules-text">Modules with Interface file:
+                                <?php $i = 0; $dir = $modules_path . "/php/";
+                                    if ($handle = opendir($dir)) {
+                                        while (($file = readdir($handle)) !== false) {
+                                            if (!in_array($file, array('.', "..")) && !is_dir($dir.$file)) {
+                                                if (substr(basename($file),0,strlen('interface_')) === 'interface_') {
+                                                    $i++;
+                                                }
+                                            }
+                                        }
+                                        echo $i;
+                                    }
+                            ?>
+                            </p>
+                            <h4>Config Setup</h4>
+                            <p class="stats-modules-text">Network Path:
+                                <?php echo $network_path; ?>
+                            </p>
+                            <p class="stats-modules-text">Modules Path:
+                                <?php echo $modules_path; ?>
+                            </p>
+                            <p class="stats-modules-text">Language:
+                                <?php echo $language; ?>
+                            </p>
+                            <p class="stats-modules-text">REST API enabled:
+                                <?php echo $restapi; ?>
+                            </p>
+                            <p class="stats-modules-text"></p>
                         </div>
                     </div>
                 </div>
