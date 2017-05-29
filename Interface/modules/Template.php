@@ -97,8 +97,7 @@ include 'php/basics.php';
             </aside>
             <section id="content">
                 <div class="container">
-
-                    <!-- THE MAIN CONTENT OF THE PAGE GOES HERE!!! -->
+                    <!-- Main Content goes here -->
                 </div>
             </section>
         </section>

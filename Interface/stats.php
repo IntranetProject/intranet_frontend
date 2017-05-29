@@ -82,7 +82,7 @@ if (($_SESSION['login'])) {
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="index.php"><i class="zmdi zmdi-home"></i><?php echo $_SESSION['system_index_dashboard']; ?></a>
                     </li>
                     <?php
@@ -97,7 +97,7 @@ if (($_SESSION['login'])) {
             }
           }
            ?>
-                        <li>
+                        <li class="active">
                             <a href="stats.php"><i class="zmdi zmdi-reader"></i><?php echo $_SESSION['system_index_stats']; ?></a>
                         </li>
                 </ul>
@@ -184,7 +184,7 @@ if (($_SESSION['login'])) {
                                 <?php echo $version; ?>
                             </p>
                             <p class="stats-modules-text">Documentation:
-                                <a target="_blank" href="http://docs.intranetproject.net">Offical Site</a>
+                                <a target="_blank" href="http://docs.intranetproject.net/v/<?php $var = explode("v", $version); echo $var[1]; ?>">Offical Site</a>
                             </p>
                             <p class="stats-modules-text">Logged in user:
                                 <?php echo $_SESSION['name']; ?>

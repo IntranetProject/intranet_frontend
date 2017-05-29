@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.15";
+$version = "v0.0.19";
 
 $network_path = "//server/IntraDev";
 $modules_path = "../Interface/modules";
@@ -16,7 +16,7 @@ $restapi = true;
 // Expert Options only! :)
 
 // for debugging:
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 // including language files for the modules (if some installed)
 $link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
@@ -39,5 +39,3 @@ if ($result == true) {
 } else {
     $initial_setup = true;
 }
-
-?>
