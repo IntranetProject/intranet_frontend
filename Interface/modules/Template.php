@@ -1,5 +1,9 @@
 <?php
-include 'php/basics.php';
+session_start();
+include '../../php/config.php';
+
+// renew connection, because it is closed in the config.
+$link = new mysqli($__database_host, $__database_user, $__database_password, $__database);
 ?>
     <!--[if IE 9 ]><html class="ie9"><![endif]-->
     <html>
