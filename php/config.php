@@ -1,5 +1,5 @@
 <?php
-$version = "v0.0.19";
+$version = "v0.0.21";
 
 $network_path = "//server/IntraDev";
 $modules_path = "../Interface/modules";

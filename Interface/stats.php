@@ -31,6 +31,10 @@ if (($_SESSION['login'])) {
             }
 
         </style>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -180,9 +184,33 @@ if (($_SESSION['login'])) {
                         </div>
                         <div class="card-body card-padding">
                             <h4>Intranet information</h4>
-                            <p class="stats-modules-text">Version:
+                            <p class="stats-modules-text" id="vrs_num">Version:
                                 <?php echo $version; ?>
                             </p>
+                            <p class="stats-modules-text" style="display: inline">Latest Version:
+                                <p class="version_num"></p>
+                                <a class="update-link" href="php/update.php"></a>
+                            </p>
+                            <script>
+                                $.get("https://api.github.com/repos/IntranetProject/intranet_frontend/commits", function(data, status) {
+                                    var i = 0;
+                                    var x = 3;
+                                    $.each(data, function(idx, obj) {
+                                        if (i >= x) {
+                                            return false;
+                                        } else {
+                                            if (i < 1) {
+                                                var version = obj.commit.message.split(";");
+                                                $(".version_num").html(version[0]);
+                                                if (version != $("#vrs_num")) {
+                                                    $(".update-link").html("Update Now!");
+                                                }
+                                            }
+                                            i++;
+                                        }
+                                    });
+                                });
+                            </script>
                             <p class="stats-modules-text">Documentation:
                                 <a target="_blank" href="http://docs.intranetproject.net/v/<?php $var = explode("v", $version); echo $var[1]; ?>">Offical Site</a>
                             </p>
@@ -227,7 +255,7 @@ if (($_SESSION['login'])) {
                                 <?php echo $language; ?>
                             </p>
                             <p class="stats-modules-text">REST API enabled:
-                                <?php echo $restapi; ?>
+                                <?php if ($restapi) { echo "true"; } else { echo "false"; }; ?>
                             </p>
                             <p class="stats-modules-text"></p>
                         </div>
