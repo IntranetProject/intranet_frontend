@@ -193,6 +193,7 @@ if (($_SESSION['login'])) {
                             </p>
                             <script>
                                 $.get("https://api.github.com/repos/IntranetProject/intranet_frontend/commits", function(data, status) {
+
                                     var i = 0;
                                     var x = 3;
                                     $.each(data, function(idx, obj) {
@@ -202,7 +203,8 @@ if (($_SESSION['login'])) {
                                             if (i < 1) {
                                                 var version = obj.commit.message.split(";");
                                                 $(".version_num").html(version[0]);
-                                                if (version != $("#vrs_num")) {
+                                                var cr_v = "<?php echo $version; ?>";
+                                                if (version[0] != cr_v) {
                                                     $(".update-link").html("Update Now!");
                                                 }
                                             }
