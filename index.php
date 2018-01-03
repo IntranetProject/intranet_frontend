@@ -49,6 +49,7 @@ if ($_anzahl <= 0) {
             }
 
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     </head>
 
     <body>
@@ -72,7 +73,7 @@ if ($_anzahl <= 0) {
             </div>
           </div>
           <small>Intranet ' . $version . '</small>
-          <a class="btn btn-login btn-default btn-float"><i class="zmdi zmdi-arrow-forward"></i></a> <input class="btn btn-login btn-default btn-float" name="submit" type="submit" value=" ">
+          <a class="btn btn-login btn-default btn-float"><i style="margin-top:25%;" class="zmdi zmdi-arrow-right"></i></a> <input class="btn btn-login btn-default btn-float" name="submit" type="submit" value=" ">
         </div>
       </form>
     </div><!-- Register -->';
