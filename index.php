@@ -50,7 +50,6 @@ if ($_anzahl <= 0) {
 
         </style>
     </head>
-<!--hi-->
     <body>
         <?php
   if ($initial_setup == false) {
