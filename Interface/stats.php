@@ -31,22 +31,11 @@ if (($_SESSION['login'])) {
             }
 
         </style>
-        <script
-                src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous"></script>
     </head>
 
     <body>
         <header class="clearfix" id="header">
             <ul class="h-inner">
-                <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
-                    <div class="line-wrap">
-                        <div class="line top"></div>
-                        <div class="line center"></div>
-                        <div class="line bottom"></div>
-                    </div>
-                </li>
                 <li class="hi-logo hidden-xs">
                     <a href="index.php">Intranet</a>
                 </li>
@@ -158,12 +147,12 @@ if (($_SESSION['login'])) {
                                         break;
                                         }
                                     }
-                                    fclose($fh); 
-                                
+                                    fclose($fh);
+
                                     $usedrn = memory_get_usage();
-                                    
+
                                     $usage = round((100 / ($mem * 1024)) * $usedrn, 2);
-                                    
+
                                     ?>
                                     <div class="epc-item card">
                                         <div class="easy-pie main-pie" data-percent="<?php echo $usage; ?>">
@@ -184,33 +173,9 @@ if (($_SESSION['login'])) {
                         </div>
                         <div class="card-body card-padding">
                             <h4>Intranet information</h4>
-                            <p class="stats-modules-text" id="vrs_num">Version:
+                            <p class="stats-modules-text">Version:
                                 <?php echo $version; ?>
                             </p>
-                            <p class="stats-modules-text" style="display: inline">Latest Version:
-                                <p class="version_num"></p>
-                                <a class="update-link" href="php/update.php"></a>
-                            </p>
-                            <script>
-                                $.get("https://api.github.com/repos/IntranetProject/intranet_frontend/commits", function(data, status) {
-                                    var i = 0;
-                                    var x = 3;
-                                    $.each(data, function(idx, obj) {
-                                        if (i >= x) {
-                                            return false;
-                                        } else {
-                                            if (i < 1) {
-                                                var version = obj.commit.message.split(";");
-                                                $(".version_num").html(version[0]);
-                                                if (version != $("#vrs_num")) {
-                                                    $(".update-link").html("Update Now!");
-                                                }
-                                            }
-                                            i++;
-                                        }
-                                    });
-                                });
-                            </script>
                             <p class="stats-modules-text">Documentation:
                                 <a target="_blank" href="http://docs.intranetproject.net/v/<?php $var = explode("v", $version); echo $var[1]; ?>">Offical Site</a>
                             </p>
@@ -255,7 +220,7 @@ if (($_SESSION['login'])) {
                                 <?php echo $language; ?>
                             </p>
                             <p class="stats-modules-text">REST API enabled:
-                                <?php if ($restapi) { echo "true"; } else { echo "false"; }; ?>
+                                <?php echo $restapi; ?>
                             </p>
                             <p class="stats-modules-text"></p>
                         </div>

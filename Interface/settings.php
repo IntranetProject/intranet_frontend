@@ -36,13 +36,6 @@ if (($_SESSION['login'])) {
     <body>
         <header class="clearfix" id="header">
             <ul class="h-inner">
-                <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
-                    <div class="line-wrap">
-                        <div class="line top"></div>
-                        <div class="line center"></div>
-                        <div class="line bottom"></div>
-                    </div>
-                </li>
                 <li class="hi-logo hidden-xs">
                     <a href="index.php">Intranet</a>
                 </li>
@@ -193,7 +186,7 @@ if (($_SESSION['login'])) {
             echo '<div class="col-sm-2"><button class="btn btn-default btn-file m-r-10 waves-effect" name="submit" type="sumbit" value=" ">Löschen!</button></div>';
           echo '</form>';
         echo '</div></div>';
-        
+
         echo '<div class="card">';
           echo '<div class="card-header">';
             echo '<h2>' . $_SESSION['system_settings_usermanagment_userlisttitle'] . '<small>' . $_SESSION['system_settings_usermanagment_userlistsmall'] . '</small></h2>';
@@ -202,14 +195,14 @@ if (($_SESSION['login'])) {
             echo '<table class="table">';
               echo '<thead><tr><th>#</th><th>Name</th><th>Loginname</th><th>img_url</th><th>Rank</th></tr></thead>';
               echo '<tbody>';
-              
+
               include '../php/config.php';
 
               $db_host = $__database_host;
               $db_db = $__database;
               $db_user = $__database_user;
               $db_passwd = $__database_password;
-              
+
               $link = new mysqli($db_host, $db_user, $db_passwd, $db_db);
               if ($link->connect_errno > 0) {
                 die("Can't connect to Database! Check login credentials!" . $link->connect_errno);
@@ -217,15 +210,15 @@ if (($_SESSION['login'])) {
               $_sql = "SELECT * FROM users";
               $_res = $link->query($_sql);
               $_anzahl = $_res->num_rows;
-              
+
               $html = "";
               while ($row = $_res->fetch_assoc()) {
                 $html .= '<tr><td>' . $row['id'] . '</td><td>' . $row['name'] . '</td><td>' . $row['login'] . '</td><td>' . $row['img_url'] . '</td><td>' . $row['rank'] . '</td></tr>';
               }
               mysqli_close($link);
-              
+
               echo $html;
-              
+
               echo '</tbody>';
             echo '</table>';
           echo '</div>';

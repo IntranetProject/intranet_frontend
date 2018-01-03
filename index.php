@@ -16,7 +16,7 @@ if ($link->connect_errno > 0) {
 $_sql = "SELECT * FROM users";
 $_res = $link->query($_sql);
 $_anzahl = $_res->num_rows;
-  
+
 if ($_anzahl <= 0) {
   $__system_setup_desc = "<p>It looks like your visiting the first time. You need to setup the Databases or have our script doing it for you. Just put in your MySQL-Logindata below and click on setup!<br>This will only create the tables that are nessesarry for the basic system. <br> For every module you have to run their special initial script! </p>";
   $__system_setup_title = "First Steps";
@@ -50,6 +50,7 @@ if ($_anzahl <= 0) {
 
         </style>
     </head>
+
     <body>
         <?php
   if ($initial_setup == false) {
@@ -87,7 +88,6 @@ if ($_anzahl <= 0) {
   }
     ?>
 
-            </div>
             <!-- Older IE warning message -->
             <!--[if lt IE 9]>
             <div class="ie-warning">
@@ -128,7 +128,7 @@ if ($_anzahl <= 0) {
                     </ul>
                 </div>
                 <p>Sorry for the inconvenience!</p>
-            </div>   
+            </div>
         <![endif]-->
             <!-- Javascript Libraries -->
             <script src="Interface/vendors/bower_components/jquery/dist/jquery.min.js">

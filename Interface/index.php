@@ -36,13 +36,6 @@ if (($_SESSION['login'])) {
     <body>
         <header class="clearfix" id="header">
             <ul class="h-inner">
-                <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
-                    <div class="line-wrap">
-                        <div class="line top"></div>
-                        <div class="line center"></div>
-                        <div class="line bottom"></div>
-                    </div>
-                </li>
                 <li class="hi-logo hidden-xs">
                     <a href="index.php">Intranet</a>
                 </li>
