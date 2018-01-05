@@ -42,10 +42,13 @@ if (($_SESSION['login'])) {
                 <li class="pull-right">
                     <ul class="hi-menu">
                         <li class="dropdown">
-                            <a data-toggle="dropdown" href="#"><i class="him-icon zmdi zmdi-more-vert"></i></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="dropToggle"><i class="him-icon zmdi zmdi-more-vert"></i></a>
                             <ul class="dropdown-menu dm-icon pull-right">
-                                <li class="hidden-xs">
-                                    <a data-ma-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i><?php echo $_SESSION['system_index_togglefullscreen']; ?></a>
+                                <li class="" id="myToggle1">
+                                    <a data-ma-action="fullscreen" href="#" onclick="myFunction()"><i class="zmdi zmdi-fullscreen"></i><?php echo $_SESSION['system_index_togglefullscreen']; ?></a>
+                                </li>
+                                <li class="hide" id="myToggle2">
+                                    <a data-ma-action="no-fullscreen" onclick="fullscreen()" href="javascript:void(0);"><i class="zmdi zmdi-fullscreen"></i><?php echo $_SESSION['system_index_togglefullscreen']; ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -339,6 +342,45 @@ if (($_SESSION['login'])) {
 
         <script src="js/app.min.js">
 
+
+        </script>
+        <script>
+            function myFunction() {
+                document.getElementById("myToggle1").classList.toggle("hide");
+                document.getElementById("myToggle2").classList.toggle("hide");
+                document.getElementById('dropToggle').click();
+            }
+
+            function fullscreen() {
+                document.getElementById('dropToggle').click();
+                var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+                    (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+                    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+                    (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+                var docElm = document.documentElement;
+                if (!isInFullScreen) {
+                    if (docElm.requestFullscreen) {
+                        docElm.requestFullscreen();
+                    } else if (docElm.mozRequestFullScreen) {
+                        docElm.mozRequestFullScreen();
+                    } else if (docElm.webkitRequestFullScreen) {
+                        docElm.webkitRequestFullScreen();
+                    } else if (docElm.msRequestFullscreen) {
+                        docElm.msRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+            }
 
         </script>
     </body>
