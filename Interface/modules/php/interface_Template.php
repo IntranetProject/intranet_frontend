@@ -1,3 +1,5 @@
 <?php
+include 'basics.php';
+
 
 ?>
